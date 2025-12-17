@@ -1,0 +1,388 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# Pricing Section
+--------------------------------------------------------------*/
+
+.pricing {
+  padding-top: 80px;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 80px;
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-title {
+    padding-bottom: 40px;
+  }
+
+  .upcoming-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 140px;
+    margin: 32px auto;
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  .pricing-toggle-wrapper {
+    margin: 0 auto 40px;
+  }
+
+  .pricing-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--surface-color);
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+
+    .monthly,
+    .yearly {
+      font-size: 16px;
+      font-weight: 600;
+      padding: 0 15px;
+      color: color-mix(in srgb, var(--default-color), transparent 30%);
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &.active {
+        color: var(--accent-color);
+      }
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 32px;
+
+      input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: color-mix(in srgb, var(--accent-color), transparent 80%);
+        transition: .3s;
+        border-radius: 34px;
+
+        &:before {
+          position: absolute;
+          content: "";
+          height: 24px;
+          width: 24px;
+          left: 4px;
+          bottom: 4px;
+          background-color: var(--contrast-color);
+          transition: .3s;
+          border-radius: 50%;
+        }
+      }
+
+      input:checked+.slider {
+        background-color: var(--accent-color);
+      }
+
+      input:checked+.slider:before {
+        transform: translateX(28px);
+      }
+    }
+
+    .save-badge {
+      position: absolute;
+      right: -15px;
+      top: -15px;
+      background-color: var(--accent-color);
+      color: var(--contrast-color);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+  }
+
+  .pricing-item {
+    position: relative;
+    background-color: var(--surface-color);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    &.featured {
+      border: 2px solid var(--accent-color);
+      transform: scale(1.03);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        transform: translateY(-10px) scale(1.03);
+      }
+
+      .card-price {
+        background-color: var(--accent-color);
+
+        h4 {
+          color: var(--contrast-color);
+
+          .currency {
+            color: var(--contrast-color);
+          }
+
+          .period {
+            color: color-mix(in srgb, var(--contrast-color), transparent 35%);
+          }
+        }
+      }
+
+      .card-action .btn-pricing {
+        background-color: var(--accent-color);
+        color: var(--contrast-color);
+      }
+    }
+
+    .price.yearly {
+      display: none;
+    }
+
+    &.yearly-active {
+      .price.monthly {
+        display: none;
+      }
+
+      .price.yearly {
+        display: block;
+      }
+    }
+  }
+
+  .popular-badge {
+    position: absolute;
+    top: 24px;
+    right: -35px;
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 40px;
+    transform: rotate(45deg);
+    z-index: 10;
+  }
+
+  .card-header {
+    padding: 35px 30px 20px;
+    text-align: center;
+
+    h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 15px 0 10px;
+      color: var(--heading-color);
+    }
+
+    p {
+      font-size: 14px;
+      color: color-mix(in srgb, var(--default-color), transparent 40%);
+      margin-bottom: 0;
+    }
+  }
+
+  .icon {
+    margin: 0 auto;
+    width: 70px;
+    height: 70px;
+    background: color-mix(in srgb, var(--accent-color), transparent 90%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(45deg);
+
+    i {
+      color: var(--accent-color);
+      font-size: 28px;
+      transform: rotate(-45deg);
+    }
+  }
+
+  .card-price {
+    padding: 20px 30px;
+    text-align: center;
+    background-color: color-mix(in srgb, var(--background-color), #f8f9fa 50%);
+
+    h4 {
+      font-size: 52px;
+      font-weight: 700;
+      margin: 0;
+      color: var(--heading-color);
+      line-height: 1;
+
+      .currency {
+        font-size: 24px;
+        position: relative;
+        top: -15px;
+        margin-right: 2px;
+      }
+
+      .period {
+        font-size: 15px;
+        color: color-mix(in srgb, var(--default-color), transparent 50%);
+        font-weight: 400;
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .card-features {
+    padding: 30px;
+    flex-grow: 1;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        display: flex;
+        align-items: flex-start;
+        padding: 12px 0;
+        color: var(--default-color);
+
+        &.na {
+          color: color-mix(in srgb, var(--default-color), transparent 60%);
+
+          .feature-icon i {
+            color: #e45353;
+          }
+
+          span {
+            text-decoration: line-through;
+          }
+        }
+      }
+
+      .feature-icon {
+        flex-shrink: 0;
+        margin-right: 15px;
+
+        i {
+          color: #25d366;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  .card-action {
+    padding: 20px 30px 35px;
+    text-align: center;
+
+    .btn-pricing {
+      display: inline-block;
+      padding: 12px 40px;
+      border-radius: 50px;
+      background-color: color-mix(in srgb, var(--background-color), #f8f9fa 50%);
+      color: var(--heading-color);
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+      width: 100%;
+
+      &:hover {
+        background-color: var(--accent-color);
+        color: var(--contrast-color);
+        transform: translateY(-3px);
+      }
+    }
+  }
+
+  @media (max-width: 991px) {
+    .pricing-item.featured {
+      transform: scale(1);
+
+      &:hover {
+        transform: translateY(-10px);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section-title {
+      padding-bottom: 32px;
+    }
+
+    .pricing-toggle-wrapper {
+      margin-bottom: 32px;
+    }
+
+    .pricing-toggle {
+
+      .monthly,
+      .yearly {
+        font-size: 14px;
+        padding: 0 10px;
+      }
+
+      .switch {
+        width: 50px;
+      }
+    }
+
+    .card-price h4 {
+      font-size: 42px;
+
+      .currency {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .token-equivalence {
+    text-align: center;
+
+    p {
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+  }
+}
